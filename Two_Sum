@@ -1,0 +1,55 @@
+1. Two Sum: 
+
+Example Input: [2,7,11,15]
+
+#Two Pointer Solution: 
+#Steps: 
+#The main method is using two pointers low and high to move around to get the curr_sum = target 
+#Generate an array with index linked then sort the index  
+#The termination is when high = low
+#If the currenet sum = target, then output the index location 
+#If the index > target, then the high point should move down 
+#If the index < target, then the high point should move up 
+
+#Complexity Analysis: 
+Sorting will be O(nlogn) complexity and while loop still goes through n element O(n) 
+The space complexity will be O(n) because it takes n space for getting the target 
+
+#Python3 Implementation: 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+        #initiate a idx value 
+        idx_value = [[j,i] for i,j in enumerate(nums)]
+        idx_value.sort() 
+        low, high = 0, len(nums)-1 
+
+        #move the pointers from up and down to get the target value 
+        while low < high: 
+            curr = idx_value[low][0] + idx_value[high][0]
+
+            if curr == target: 
+                return [idx_value[low][1],idx_value[high][1]]
+            elif curr > target: 
+                high-=1 
+            else: 
+                low+=1 
+        return[-1,-1]
+
+#Another is to implementation will be using hashmap 
+#Steps: 
+#Initialize a new hashmap
+#put the elements into the hashmap 
+#if target - nums[i] in the hashmap, get the index 
+#if not just skip 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {} 
+
+        for i in range(len(nums)): 
+            hashmap[nums[i]] = i 
+
+        for i in range(len(nums)): 
+            com = target-nums[i]
+            if com in hashmap and hashmap[com] !=i:
+                 return [i,hashmap[com]]

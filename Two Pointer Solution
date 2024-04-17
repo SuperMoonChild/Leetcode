@@ -1,0 +1,19 @@
+https://xerdemo.github.io/2018/08/31/%E5%8F%8C%E6%8C%87%E9%92%88%E6%80%BB%E7%BB%93%E7%AF%87/
+
+TWO POINTERS PROBLEMS: 
+1. Two pointers are in the same direction: 
+
+* Application: 
+(1) Oftern solve in-place requirement 
+(2) Always use in the remove duplicates scenarios 
+(3) Find a specific target in the array 
+(3) The time complexity is usually O(n) 
+
+The leetcode problems that are related to this
+
+1. Move Zeros 
+2. Remove Element 
+3. Remove Element from the sorted array 
+4. Remove Element from the sorted array II 
+
+

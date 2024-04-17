@@ -1,0 +1,11 @@
+#Permutation Problem in Array 
+https://leetcode.com/problems/palindrome-permutation/description/
+
+Given a string s, return true if a permutation of the string could form a 
+palindrome and false otherwise.
+
+Example 1:
+Input: s = "code"
+Output: false
+
+

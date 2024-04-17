@@ -1,0 +1,36 @@
+Example 1:
+
+Input: ransomNote = "a", magazine = "b"
+Output: false
+Example 2:
+
+Input: ransomNote = "aa", magazine = "ab"
+Output: false
+Example 3:
+
+Input: ransomNote = "aa", magazine = "aab"
+Output: true
+
+Using Two Hashmap to solve this problem 
+(1) Put two hashmap counters into the map 
+(2) Using the Ransom Note char count in Magazine Count 
+(3) If they are equal, then return True, otherwise return false 
+
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        if not ransomNote and not magazine:
+            return False 
+        if len(ransomNote) > len(magazine): return False 
+        
+        #Put the two strings in the Hashmap, count all the Hashmap 
+        magazine_counts = collections.Counter(magazine)
+        ransom_note_counts = collections.Counter(ransomNote)
+ 
+
+        for char,count in ransom_note_counts.items(): 
+            magazine_count = magazine_counts[char]
+            if magazine_count < count: 
+                return False 
+        return True 
+
+        

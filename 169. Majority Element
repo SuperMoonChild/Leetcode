@@ -1,0 +1,57 @@
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+Example 1:
+Input: nums = [3,2,3]
+Output: 3
+Example 2:
+
+Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+
+Boyer-Moore Voting Algorithm: 
+#select the candidate 
+[3,2,3]
+
+Dry run the process: 
+num  count  (num == candidate) candidate 
+3       1       True             3 
+2       0        False           3 
+3       0       True             3 
+
+There are two steps in this Boyer-Moore Counting: 
+** As long as there is a new element, we use them as candidate and the count will be -1. 
+** Then we loop through the final array, and validate the count whether it is count(N)> floor(N//2), if not, then there is no majority element. 
+** There is a good video for explaining this method pretty well: https://www.youtube.com/watch?v=n5QY3x_GNDg 
+** The time complexity for this is O(n) but only O(1) for space complexity 
+
+class Solution:
+    def majorityElement(self, nums):
+        count = 0
+        candidate = None
+
+        for num in nums:
+            if count == 0:
+                candidate = num
+            count += (1 if num == candidate else -1)
+
+        return candidate
+
+Hashmap solution: 
+1. Put the array in hashmap 
+2. Traverse the hashmap and get the counting for each number 
+3. Validate the results to become the Majority Element 
+class Solution:
+    def majorityElement(self, nums):
+         hash_table={} 
+         #put the element in the hash table 
+         for element in nums: 
+             if element in hash_table:
+                hash_table[element]+=1 
+             else: 
+                hash_table[element]=1 
+        #validate the count of the table 
+         for num in hash_table: 
+             if hash_table[num] > len(nums)/2: 
+                 return num 
+         return -1
+  

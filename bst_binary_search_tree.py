@@ -284,3 +284,33 @@ result = [[3]]
 traverse through the tree: left = 9, right = 20 
 
 """
+
+#LeetCode 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rightSideView(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        result = []
+        que = deque([root])
+
+        while que:
+            size = len(que)
+            level = []
+            for i in range(size):
+                node = que.popleft()
+                level.append(node.val)
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+            result.append(level[-1]) #for each level just return the rightmost element 
+
+        return result
+
